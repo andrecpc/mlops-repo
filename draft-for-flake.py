@@ -19,3 +19,7 @@ while True:
         break
     except Exception:
         pass
+
+
+def calc(x):
+    return x * 2
