@@ -1,7 +1,7 @@
 mlops-test-repo
 ==============================
 
-A short description of the project.
+ML task and code are taken from here https://www.kaggle.com/code/chitwanmanchanda/vegetable-image-classification-using-cnn/notebook
 
 Project Organization
 ------------
