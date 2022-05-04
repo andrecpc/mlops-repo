@@ -8,10 +8,15 @@ from keras.models import *
 from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 import os, shutil
+import click
 import warnings
 warnings.filterwarnings('ignore')
 
-
+@click.command()
+@click.argument("train_path", type=click.Path())
+@click.argument("validation_path", type=click.Path())
+@click.argument("test_path", type=click.Path())
+@click.argument("save_model_path", type=click.Path())
 def train(train_path: str, validation_path: str, test_path: str, save_model_path: str):
 
     image_categories = os.listdir(train_path)
@@ -72,7 +77,7 @@ def train(train_path: str, validation_path: str, test_path: str, save_model_path
     early_stopping = keras.callbacks.EarlyStopping(patience=5) # Set up callbacks
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics='accuracy')
     hist = model.fit(train_image_generator, 
-                    epochs=100, 
+                    epochs=10, 
                     verbose=1, 
                     validation_data=val_image_generator, 
                     steps_per_epoch = 15000//32, 

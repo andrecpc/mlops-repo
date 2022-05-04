@@ -8,11 +8,14 @@ from keras.models import *
 from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 import os, shutil
+import click
 import warnings
 warnings.filterwarnings('ignore')
 
 
-
+@click.command()
+@click.argument("test_image_path", type=click.Path())
+@click.argument("model_path", type=click.Path())
 def generate_predictions(test_image_path: str, model_path: str):
 
     model = keras.models.load_model(model_path)

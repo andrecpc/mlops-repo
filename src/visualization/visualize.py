@@ -5,8 +5,8 @@ import click
 import os
 
 
-# @click.command()
-# @click.argument("input_path", type=click.Path(exists=True), default='data/raw/VegetableImages/train')
+@click.command()
+@click.argument("input_path", type=click.Path(exists=True), default='data/raw/VegetableImages/train')
 def visualize(input_path: str):
 
     image_categories = os.listdir(input_path)
