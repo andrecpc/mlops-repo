@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  visualize:
+    cmd: python src/visualization/visualize.py data/raw/VegetableImages/train
+    deps:
+    - path: data/raw/VegetableImages/train
+      md5: ec470e775907e7796f01e8a63b45de8e.dir
+      size: 408340920
+      nfiles: 15000
+    - path: src/visualization/visualize.py
+      md5: db89137e07958e91c8b86b6f8143dffb
+      size: 1001
