@@ -10,7 +10,10 @@ from keras.preprocessing.image import ImageDataGenerator
 import os, shutil
 import click
 import warnings
+import mlflow
 warnings.filterwarnings('ignore')
+
+# mlflow.keras.autolog()
 
 @click.command()
 @click.argument("train_path", type=click.Path())
@@ -72,20 +75,31 @@ def train(train_path: str, validation_path: str, test_path: str, save_model_path
     # print the model summary
     model.summary()
 
+    params = {
+        'epochs' : 2,
+        'verbose' : 1,
+        'steps_per_epoch' : 15000//32,
+        'validation_steps' : 3000//32
+    }
+
+    mlflow.log_params(params)
 
     # Compile and fit the model
     early_stopping = keras.callbacks.EarlyStopping(patience=5) # Set up callbacks
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics='accuracy')
     hist = model.fit(train_image_generator, 
-                    epochs=10, 
-                    verbose=1, 
+                    epochs=params['epochs'], 
+                    verbose=params['verbose'], 
                     validation_data=val_image_generator, 
-                    steps_per_epoch = 15000//32, 
-                    validation_steps = 3000//32, 
+                    steps_per_epoch = params['steps_per_epoch'], 
+                    validation_steps = params['validation_steps'], 
                     callbacks=early_stopping)
                     
     # Predict the accuracy for the test set
     print(model.evaluate(test_image_generator))
+
+    mlflow.log_metrics(model.evaluate(test_image_generator))
+    mlflow.log_artifact(save_model_path)
 
     model.save(save_model_path)
 
