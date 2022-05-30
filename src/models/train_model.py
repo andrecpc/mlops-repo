@@ -11,15 +11,17 @@ import os, shutil
 import click
 import warnings
 import mlflow
-from mlflow.models.signature import infer_signature
+import mlflow.keras
+# from mlflow.models.signature import infer_signature
 from dotenv import load_dotenv
 warnings.filterwarnings('ignore')
 
 load_dotenv()
 remote_server_uri = os.getenv("MLFLOW_TRACKING_URI")
 mlflow.set_tracking_uri(remote_server_uri)
+mlflow.set_experiment("main-train")
 
-# mlflow.keras.autolog()
+mlflow.keras.autolog()
 
 @click.command()
 @click.argument("train_path", type=click.Path())
@@ -41,7 +43,7 @@ def train(train_path: str, validation_path: str, test_path: str, save_model_path
         train_image_generator = train_gen.flow_from_directory(
                                                     train_path,
                                                     target_size=(150, 150),
-                                                    batch_size=256, # 32
+                                                    batch_size=32, # 32
                                                     class_mode='categorical')
 
         # 2. Validation Set
@@ -86,9 +88,9 @@ def train(train_path: str, validation_path: str, test_path: str, save_model_path
         model.summary()
 
         params = {
-            'epochs' : 1,
+            'epochs' : 10,
             'verbose' : 1,
-            'steps_per_epoch' : 5000//32, # 15000//32
+            'steps_per_epoch' : 15000//32, # 15000//32
             'validation_steps' : 3000//32
         }
 
@@ -110,7 +112,7 @@ def train(train_path: str, validation_path: str, test_path: str, save_model_path
         print(result_metrics)
 
         mlflow.log_metrics({'loss': result_metrics[0], 'accuracy': result_metrics[1]})
-        # signature = infer_signature(x_holdout, y_predicted)
+        # signature = infer_signature(test_image_generator., model.predict(test_image_generator))
         # mlflow.log_artifact(save_model_path)
         mlflow.keras.log_model(model, "models")  # https://mlflow.org/docs/latest/models.html
 
