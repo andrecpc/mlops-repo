@@ -16,6 +16,8 @@ scipy = "^1.8.0"
 pywin32 = "^304"
 mlflow = "^1.25.1"
 python-dotenv = "^0.20.0"
+uvicorn = "^0.17.6"
+fastapi = "^0.78.0"
 
 [tool.poetry.dev-dependencies]
 
