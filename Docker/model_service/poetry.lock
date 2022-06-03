@@ -125,14 +125,15 @@ tz = ["python-dateutil"]
 
 [[package]]
 name = "aliyun-python-sdk-core"
-version = "2.11.5"
+version = "2.13.36"
 description = "The core module of Aliyun Python SDK."
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-pycryptodome = ">=3.4.7"
+cryptography = ">=2.6.0"
+jmespath = ">=0.9.3,<1.0.0"
 
 [[package]]
 name = "aliyun-python-sdk-kms"
@@ -1259,11 +1260,11 @@ i18n = ["Babel (>=2.7)"]
 
 [[package]]
 name = "jmespath"
-version = "1.0.0"
+version = "0.10.0"
 description = "JSON Matching Expressions"
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "keras"
@@ -1550,14 +1551,14 @@ tests = ["pytest", "pytest-cov", "pytest-pep8"]
 
 [[package]]
 name = "oss2"
-version = "2.13.1"
+version = "2.15.0"
 description = "Aliyun OSS (Object Storage Service) SDK"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-aliyun-python-sdk-core = ">=2.6.2"
+aliyun-python-sdk-core = ">=2.13.12"
 aliyun-python-sdk-kms = ">=2.4.1"
 crcmod = ">=1.7"
 pycryptodome = ">=3.4.7"
@@ -2691,7 +2692,7 @@ alembic = [
     {file = "alembic-1.8.0.tar.gz", hash = "sha256:a2d4d90da70b30e70352cd9455e35873a255a31402a438fe24815758d7a0e5e1"},
 ]
 aliyun-python-sdk-core = [
-    {file = "aliyun-python-sdk-core-2.11.5.tar.gz", hash = "sha256:577265c630c02207c692ca19958bd21665d56208306a834d0885e7770553975e"},
+    {file = "aliyun-python-sdk-core-2.13.36.tar.gz", hash = "sha256:20bd54984fa316da700c7f355a51ab0b816690e2a0fcefb7b5ef013fed0da928"},
 ]
 aliyun-python-sdk-kms = [
     {file = "aliyun-python-sdk-kms-2.15.0.tar.gz", hash = "sha256:642a3f4f04dcdba5f8a3a0f1edff04479e76df33017a5b25512490ce5894ab2d"},
@@ -3339,8 +3340,8 @@ jinja2 = [
     {file = "Jinja2-3.1.2.tar.gz", hash = "sha256:31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852"},
 ]
 jmespath = [
-    {file = "jmespath-1.0.0-py3-none-any.whl", hash = "sha256:e8dcd576ed616f14ec02eed0005c85973b5890083313860136657e24784e4c04"},
-    {file = "jmespath-1.0.0.tar.gz", hash = "sha256:a490e280edd1f57d6de88636992d05b71e97d69a26a19f058ecf7d304474bf5e"},
+    {file = "jmespath-0.10.0-py2.py3-none-any.whl", hash = "sha256:cdf6525904cc597730141d61b36f2e4b8ecc257c420fa2f4549bac2c2d0cb72f"},
+    {file = "jmespath-0.10.0.tar.gz", hash = "sha256:b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9"},
 ]
 keras = [
     {file = "keras-2.9.0-py2.py3-none-any.whl", hash = "sha256:55911256f89cfc9343c9fbe4b61ec45a2d33d89729cbe1ab9dcacf8b07b8b6ab"},
@@ -3618,7 +3619,7 @@ opt-einsum = [
     {file = "opt_einsum-3.3.0.tar.gz", hash = "sha256:59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549"},
 ]
 oss2 = [
-    {file = "oss2-2.13.1.tar.gz", hash = "sha256:8548ea7d43326f6fd679bc8b79b3a2dfbfe9c6a60ed57e2410818fec57023dda"},
+    {file = "oss2-2.15.0.tar.gz", hash = "sha256:d8b5a10ba2291ff4c78246576f243dcec262f1f646344e61f3192dc262e87430"},
 ]
 ossfs = [
     {file = "ossfs-2021.8.0-py2.py3-none-any.whl", hash = "sha256:0b19fab6ed3586915a8c4a0ea4e131c19cdd9955d971e27d1568bdf78977029c"},
