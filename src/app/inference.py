@@ -64,7 +64,7 @@ async def create_upload_file(image: UploadFile = File(...)):
         # Raise a HTTP 400 Exception, indicating Bad Request 
         # (you can learn more about HTTP response status codes here)
         raise HTTPException(status_code=400, detail="Invalid file format. Only jpg Files accepted.")
-Check if the environment variables for AWS access are available. 
-If not, exit the program
+# Check if the environment variables for AWS access are available. 
+# If not, exit the program
 if os.getenv("AWS_ACCESS_KEY_ID") is None or os.getenv("AWS_SECRET_ACCESS_KEY") is None:
     exit(1)

@@ -24,8 +24,10 @@ def generate_predictions(test_image_path: str, model_path: str):
                 11: 'Potato', 12: 'Pumpkin', 13: 'Radish', 14: 'Tomato'}
     
     # 1. Load and preprocess the image
-    test_img = image.load_img(test_image_path, target_size=(150, 150))
-    test_img_arr = image.img_to_array(test_img)/255.0
+    # test_img = image.load_img(test_image_path, target_size=(150, 150))
+    # test_img_arr = image.img_to_array(test_img)/255.0
+    test_img = keras.utils.load_img(test_image_path, target_size=(150, 150))
+    test_img_arr = keras.utils.img_to_array(test_img)/255.0
     test_img_input = test_img_arr.reshape((1, test_img_arr.shape[0], test_img_arr.shape[1], test_img_arr.shape[2]))
 
     # 2. Make Predictions

@@ -1,7 +1,9 @@
-mlops-test-repo
+mlops-repo
 ==============================
 
-ML task and code are taken from here https://www.kaggle.com/code/chitwanmanchanda/vegetable-image-classification-using-cnn/notebook
+Final project by MLOps course (ODS, Yandex.Q)
+
+ML task and a part of code are taken from here https://www.kaggle.com/code/chitwanmanchanda/vegetable-image-classification-using-cnn/notebook
 
 Project Organization
 ------------
@@ -11,47 +13,33 @@ Project Organization
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
     │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
-    │
+    ├── Docker             <- Docker settings for minio, mlflow, pgsql, nginx
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
+    ├── mlruns             <- Meta-data of mlflows runnings
     ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
+    ├── notebooks          <- Jupyter notebooks (EDA)
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
-    │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
     ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
     │   │   ├── predict_model.py
+    │   │   ├── predict_sample.py
     │   │   └── train_model.py
-    │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
+    │   |   └── visualize.py
+    |   ├── app       <- Scripts to run API
+    │       └── inference.py
+    ├── venv               <- Virtual environment settings
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
-
+    └── docker-compose.yaml <- Docker settings
+    └── dvc.lock           <- DVC meta-data
+    └── dvc.yaml           <- DVC pipline settings 
+    └── mlops-ods.drawio.xml    <- Pipline structure in draw.io format
+    └── poetry path.txt    <- Usefull CLI commands 
+    └── poetry.lock        <- Poetry meta-data 
+    └── pyproject.toml     <- Poetry settings 
+    └── start.py           <- Simple pythons pipline 
 --------
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>

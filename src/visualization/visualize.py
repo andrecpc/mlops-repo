@@ -20,8 +20,10 @@ def visualize(input_path: str):
         images_in_folder = os.listdir(image_path)
         first_image_of_folder = images_in_folder[0]
         first_image_path = image_path + '/' + first_image_of_folder
-        img = image.load_img(first_image_path)
-        img_arr = image.img_to_array(img)/255.0
+        # img = image.load_img(first_image_path)
+        # img_arr = image.img_to_array(img)/255.0
+        img = keras.utils.load_img(first_image_path)
+        img_arr = keras.utils.img_to_array(img)/255.0
 
         plt.subplot(4, 4, i+1)
         plt.imshow(img_arr)
